@@ -18,6 +18,10 @@ const RootFlex = styled(Flex)`
   position: relative;
 `
 
+const RaisedBox = styled(Box)`
+  z-index: 4;
+`
+
 const Loader = styled(BounceLoader)`
   position: absolute;
   top: 50%;
@@ -53,7 +57,7 @@ export function Home(): ReactElement {
 
   return (
     <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
-      <Box>
+      <RaisedBox>
         <Card padding="52px 82px">
           {loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
             <RootFlex minWidth="635px" height="100%" justifyContent="center" alignItems="center">
@@ -93,7 +97,7 @@ export function Home(): ReactElement {
             </Flex>
           )}
         </Card>
-      </Box>
+      </RaisedBox>
     </Flex>
   )
 }
