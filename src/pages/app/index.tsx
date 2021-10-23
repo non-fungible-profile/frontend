@@ -5,12 +5,22 @@ import { Header } from '../../components/header'
 import { ToastContainer, Slide } from 'react-toastify'
 import { Home } from '../home'
 import { Flex, Box } from 'rebass'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from '../../theme'
 import { useEffect } from 'react'
 import useLocation from 'react-use/lib/useLocation'
 import { TransactionsStateUpdater } from '../../state/transactions/updater'
 import { NetworkWarningModal } from '../../components/network-warning-modal'
+import illustrationImage from '../../assets/illustration.png'
+
+const Illustration = styled.div`
+  background-image: url(${illustrationImage});
+  position: fixed;
+  bottom: -100px;
+  right: -400px;
+  width: 1000px;
+  height: 500px;
+`
 
 export function App() {
   const darkMode = useIsDarkMode()
@@ -37,6 +47,7 @@ export function App() {
           </Box>
         </Flex>
         <NetworkWarningModal />
+        <Illustration />
       </ThemeProvider>
       <ToastContainer
         className="custom-toast-root"
