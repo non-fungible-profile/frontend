@@ -4,8 +4,8 @@ import { Button } from '../../components/button'
 import { useFreeClaimAvailable } from '../../hooks/useFreeClaimAvailable'
 import { useFreeClaimCallback } from '../../hooks/useFreeClaimCallback'
 import { usePaidClaimCallback } from '../../hooks/usePaidClaimCallback'
-import Loader from 'react-spinners/BounceLoader'
-import { useTheme } from 'styled-components'
+import BounceLoader from 'react-spinners/BounceLoader'
+import styled, { useTheme } from 'styled-components'
 import { Card } from '../../components/card'
 import { Select } from '../../components/select'
 import { ProgressBar } from '../../components/progress-bar'
@@ -13,6 +13,17 @@ import { useClaimableNfpAmount } from '../../hooks/useClaimableNfpAmount'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { Decimal } from 'decimal.js-light'
 import { useMinted } from '../../hooks/useMinted'
+
+const RootFlex = styled(Flex)`
+  position: relative;
+`
+
+const Loader = styled(BounceLoader)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
 
 export function Home(): ReactElement {
   const theme = useTheme()
@@ -27,7 +38,6 @@ export function Home(): ReactElement {
   const [options, setOptions] = useState<{ label: string; value: string }[]>([])
   const [selectedOption, setSelectedOption] = useState<{ label: string; value: string } | undefined>()
 
-  console.log(loadingClaimableAmount, claimableAmount)
   useEffect(() => {
     if (!loadingClaimableAmount) {
       const options = new Array(claimableAmount).fill(null).map((_, index) => {
@@ -46,13 +56,11 @@ export function Home(): ReactElement {
       <Box>
         <Card>
           {loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
-            <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
-              <Box>
-                <Loader color={theme.accent} />
-              </Box>
-            </Flex>
+            <RootFlex width="100%" height="100%" justifyContent="center" alignItems="center">
+              <Loader color={theme.accent} />
+            </RootFlex>
           ) : (
-            <Flex flexDirection="column">
+            <Flex height="100%" flexDirection="column" justifyContent="center">
               <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
                 <Text fontSize="18px">Amount</Text>
                 <Box>
