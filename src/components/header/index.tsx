@@ -2,12 +2,12 @@ import { ReactElement, useCallback, useState } from 'react'
 import { Box, Flex } from 'rebass'
 import styled from 'styled-components'
 import { Button } from '../button'
-import { UndecoratedInternalLink } from '../undecorated-link'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { IdentityBadge } from '../identity-badge'
 import { WalletModal } from '../wallet-modal'
 import { WalletConnectionPopover } from '../wallet-connection-popover'
+import headerLogo from '../../assets/header-logo.png'
 
 const FlexContainer = styled(Flex)`
   position: fixed;
@@ -16,6 +16,14 @@ const FlexContainer = styled(Flex)`
   background-color: ${(props) => props.theme.background};
   box-shadow: 0px 12px 12px 0px ${(props) => props.theme.background};
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
+`
+
+const Root = styled(Flex)`
+  position: absolute;
+  top: 24px;
+  background: ${(props) => props.theme.background};
+  box-shadow: 0px 13px 80px rgba(50, 47, 82, 0.1);
+  border-radius: 16px;
 `
 
 const WrongNetwork = styled.div`
@@ -58,14 +66,16 @@ export const Header = (): ReactElement => {
     <>
       <WalletModal open={walletModalOpen} onDismiss={handleWalletModalClose} />
       <FlexContainer width="100%" height="70px" justifyContent="center" alignItems="center" px={['16px', '24px']}>
-        <Flex width={['100%', '80%', '70%', '55%']} justifyContent="space-between" alignItems="center">
+        <Root
+          width={['100%', '80%', '70%', '55%']}
+          px="40px"
+          height="80px"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <img src={headerLogo} height="28px" />
           <Flex alignItems="center">
             <Box>
-              <UndecoratedInternalLink to="/"></UndecoratedInternalLink>
-            </Box>
-          </Flex>
-          <Flex alignItems="center">
-            <Box mr="20px">
               {error instanceof UnsupportedChainIdError ? (
                 <WrongNetwork>Invalid network</WrongNetwork>
               ) : !!account ? (
@@ -79,7 +89,7 @@ export const Header = (): ReactElement => {
               )}
             </Box>
           </Flex>
-        </Flex>
+        </Root>
       </FlexContainer>
     </>
   )
