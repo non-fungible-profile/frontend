@@ -19,14 +19,7 @@ export function useClaimableNfpAmount(account: string | null | undefined): {
     if (!minter || loadingMinter || wrappedMintableResult.loading || wrappedMintedResult.loading) {
       setLoading(true)
       setClaimableAmount(0)
-    } else if (
-      !account ||
-      !minter.paid ||
-      !minter.free ||
-      !minter.whitelist ||
-      wrappedMintableResult.error ||
-      wrappedMintedResult.error
-    ) {
+    } else if (!account || !minter.paid || wrappedMintableResult.error || wrappedMintedResult.error) {
       setLoading(false)
       setClaimableAmount(0)
     } else {
