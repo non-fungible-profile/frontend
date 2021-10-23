@@ -5,10 +5,8 @@ import { Button } from '../button'
 import { UndecoratedInternalLink } from '../undecorated-link'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
-import { Moon, Sun } from 'react-feather'
 import { IdentityBadge } from '../identity-badge'
 import { WalletModal } from '../wallet-modal'
-import { useIsDarkMode, useToggleDarkMode } from '../../state/user/hooks'
 import { WalletConnectionPopover } from '../wallet-connection-popover'
 
 const FlexContainer = styled(Flex)`
@@ -39,9 +37,6 @@ export const Header = (): ReactElement => {
 
   const [showWalletConnectionPopover, setShowWalletConnectionPopover] = useState(false)
   const [walletModalOpen, setWalletModalOpen] = useState(false)
-
-  const darkMode = useIsDarkMode()
-  const toggleDarkMode = useToggleDarkMode()
 
   const handleAccountClick = useCallback(() => {
     setWalletModalOpen(true)
@@ -81,13 +76,6 @@ export const Header = (): ReactElement => {
                     Connect wallet
                   </Button>
                 </WalletConnectionPopover>
-              )}
-            </Box>
-            <Box display="flex" alignItems="center">
-              {darkMode ? (
-                <Sun size="20px" cursor="pointer" onClick={toggleDarkMode} />
-              ) : (
-                <Moon size="20px" cursor="pointer" onClick={toggleDarkMode} />
               )}
             </Box>
           </Flex>
