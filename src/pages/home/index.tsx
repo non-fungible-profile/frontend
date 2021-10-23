@@ -68,10 +68,13 @@ export function Home(): ReactElement {
             <Flex height="100%" minWidth="635px" flexDirection="column" justifyContent="center">
               {!account ? (
                 <Text mb="32px">Connect a wallet to begin.</Text>
-              ) : options.length === 0 ? (
-                <Text mb="32px">This wallet has reached its claiming limit.</Text>
               ) : (
-                <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
+                <Flex
+                  opacity={options.length === 0 ? 0.5 : 1}
+                  justifyContent="space-evenly"
+                  alignItems="center"
+                  mb="32px"
+                >
                   <Text mr="24px" fontSize="18px">
                     Amount
                   </Text>
@@ -83,7 +86,12 @@ export function Home(): ReactElement {
                       onChange={setSelectedOption}
                     />
                   </Box>
-                  <Button px="54px" primary onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}>
+                  <Button
+                    disabled={options.length === 0}
+                    px="54px"
+                    primary
+                    onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}
+                  >
                     Claim for{' '}
                     {!claimableForFree && selectedOption
                       ? new Decimal(selectedOption.value).times('0.07').toString()

@@ -67,6 +67,9 @@ const Root = styled(RebassButton)<ButtonProps & RebassButtonProps>`
   :focus:not(:disabled) {
     transform: scale(0.98);
   }
+  :disabled {
+    cursor: not-allowed;
+  }
 `
 
 export const Button = ({ children, icon, px, ...rest }: ButtonProps & RebassButtonProps) => {
