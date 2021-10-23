@@ -11,7 +11,7 @@ export interface Minter {
 
 export function useMinter(account: string | null | undefined): { loading: boolean; minter: Minter | undefined } {
   const nfp = useNfpGenesisContract()
-  const minterCallParams = useMemo(() => (account ? [account] : undefined), [account])
+  const minterCallParams = useMemo(() => [account || undefined], [account])
   const wrappedMinterResult = useSingleCallResult(nfp, 'minter', minterCallParams)
 
   const [minter, setMinter] = useState<Minter | undefined>()
