@@ -26,7 +26,7 @@ export function useClaimableNfpAmount(account: string | null | undefined): {
       setLoading(false)
       const mintable = wrappedMintableResult.result
       const minted = wrappedMintedResult.result
-      if (!minter.free) {
+      if (!minter.free && minted?.free.toNumber() !== mintable?.free.toNumber()) {
         setClaimableAmount(1)
         return
       }
