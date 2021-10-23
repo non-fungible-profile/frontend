@@ -2,13 +2,11 @@ import { getTheme } from '../../theme'
 import { useIsDarkMode } from '../../state/user/hooks'
 import { Footer } from '../../components/footer'
 import { Header } from '../../components/header'
-import { Redirect, Route, Switch } from 'react-router-dom'
 import { ToastContainer, Slide } from 'react-toastify'
 import { Home } from '../home'
 import { Flex, Box } from 'rebass'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from '../../theme'
-import { SkeletonTheme } from 'react-loading-skeleton'
 import { useEffect } from 'react'
 import useLocation from 'react-use/lib/useLocation'
 import { TransactionsStateUpdater } from '../../state/transactions/updater'
@@ -30,17 +28,10 @@ export function App() {
         <TransactionsStateUpdater />
         <GlobalStyle />
         <Header />
-        <Flex alignItems="center" flexDirection="column" pt="94px" height="100%">
-          <Flex flexDirection="column" flex="1" width="100%">
-            <Box flexGrow={1}>
-              <SkeletonTheme color={theme.border} highlightColor={theme.surfaceInteractive}>
-                <Switch>
-                  <Route strict exact path="/" component={Home} />
-                  <Redirect to="/" />
-                </Switch>
-              </SkeletonTheme>
-            </Box>
-          </Flex>
+        <Flex alignItems="center" flexDirection="column" height="100%">
+          <Box flex="1">
+            <Home />
+          </Box>
           <Box width={['100%', '80%', '70%', '55%']}>
             <Footer />
           </Box>
