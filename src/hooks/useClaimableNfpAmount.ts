@@ -19,7 +19,7 @@ export function useClaimableNfpAmount(account: string | null | undefined): {
     if (!minter || loadingMinter || wrappedMintableResult.loading || wrappedMintedResult.loading) {
       setLoading(true)
       setClaimableAmount(0)
-    } else if (wrappedMintableResult.error || wrappedMintedResult.error) {
+    } else if (!account || wrappedMintableResult.error || wrappedMintedResult.error) {
       setLoading(false)
       setClaimableAmount(0)
     } else {
@@ -30,12 +30,14 @@ export function useClaimableNfpAmount(account: string | null | undefined): {
         setClaimableAmount(1)
         return
       }
+      console.log(minter)
       const paidMintable = mintable?.paid - minted?.paid
       if (minter.paid.toNumber() < 3) setClaimableAmount(Math.min(paidMintable, 3 - minter.paid.toNumber()))
     }
   }, [
     loadingMinter,
     minter,
+    account,
     wrappedMintableResult.error,
     wrappedMintableResult.loading,
     wrappedMintableResult.result,

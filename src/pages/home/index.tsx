@@ -61,7 +61,9 @@ export function Home(): ReactElement {
             </RootFlex>
           ) : (
             <Flex height="100%" minWidth="635px" flexDirection="column" justifyContent="center">
-              {options.length === 0 ? (
+              {!account ? (
+                <Text mb="32px">Connect a wallet to begin.</Text>
+              ) : options.length === 0 ? (
                 <Text mb="32px">This wallet has reached its claiming limit.</Text>
               ) : (
                 <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
