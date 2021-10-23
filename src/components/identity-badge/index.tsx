@@ -12,9 +12,9 @@ const FlexContainer = styled.div<{ onClick?: any; mobile: boolean }>`
   height: 28px;
   width: fit-content;
   border: ${(props) => `solid 1px ${props.theme.border}`};
-  border-radius: 8px !important;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
-  background-color: ${(props) => props.theme.surface};
+  border-radius: 16px !important;
+  background: ${(props) => props.theme.background};
+  box-shadow: 0px 13px 80px rgba(50, 47, 82, 0.1);
   transition: background-color 0.2s ease, border 0.2s ease;
   padding: ${(props) => (props.mobile ? '0px' : '0px 12px 0px 0px')};
   cursor: ${(props) => (props.onClick ? 'pointer' : 'auto')};

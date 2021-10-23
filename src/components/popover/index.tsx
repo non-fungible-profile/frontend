@@ -42,7 +42,9 @@ export function Popover({ content, show, onHide, children }: PopoverProps) {
           (transitionStyles, item) =>
             item && (
               <animated.div style={transitionStyles}>
-                <PopoverContainer clickable={false}>{content}</PopoverContainer>
+                <PopoverContainer padding="16px 24px" clickable={false}>
+                  {content}
+                </PopoverContainer>
               </animated.div>
             )
         )}

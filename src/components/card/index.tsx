@@ -7,10 +7,9 @@ export const Card = styled(RebassCard)<{
   backgroundColor?: string
   onClick?: () => void
   disabled?: boolean
+  padding: string
 }>`
-  padding: 52px 82px;
-  width: 664px;
-  height: 272px;
+  padding: ${(props) => props.padding};
   background: ${(props) => props.theme.background};
   box-shadow: 0px 13px 80px rgba(50, 47, 82, 0.1);
   border-radius: 40px;

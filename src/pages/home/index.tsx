@@ -54,7 +54,7 @@ export function Home(): ReactElement {
   return (
     <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
       <Box>
-        <Card>
+        <Card padding="52px 82px">
           {loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
             <RootFlex width="100%" height="100%" justifyContent="center" alignItems="center">
               <Loader color={theme.accent} />
@@ -62,11 +62,11 @@ export function Home(): ReactElement {
           ) : (
             <Flex height="100%" flexDirection="column" justifyContent="center">
               <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
-                <Text fontSize="18px">Amount</Text>
-                <Box>
+                <Text mr="24px" fontSize="18px">Amount</Text>
+                <Box mr="24px">
                   <Select options={options} value={selectedOption} onChange={setSelectedOption} />
                 </Box>
-                <Button primary onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}>
+                <Button px="54px" primary onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}>
                   Claim for{' '}
                   {!claimableForFree && selectedOption ? new Decimal(selectedOption.value).times('0.07').toString() : 0}{' '}
                   ETH

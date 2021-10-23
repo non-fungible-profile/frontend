@@ -21,6 +21,7 @@ export const WalletConnectionPopover = ({ children, show, onHide }: ConnectWalle
           {SUPPORTED_WALLETS.map((supportedWallet, index) => {
             return (
               <Card
+                padding="16px 24px"
                 width="180px"
                 ml={['0px', index !== 0 ? '8px' : '0px']}
                 mt={[index !== 0 ? '8px' : '0px', '0px']}

@@ -76,7 +76,9 @@ export default function Web3ReactManager({ children }: { children: JSX.Element }
   if (!active && networkError) {
     return (
       <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
-        <Card>An unknown error occurred. Please refresh the page, or visit from another browser or device.</Card>
+        <Card padding="52px 82px">
+          An unknown error occurred. Please refresh the page, or visit from another browser or device.
+        </Card>
       </Flex>
     )
   }
