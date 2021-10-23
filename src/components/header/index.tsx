@@ -20,7 +20,7 @@ const FlexContainer = styled(Flex)`
 
 const Root = styled(Flex)`
   position: absolute;
-  top: 24px;
+  top: 40px;
   background: ${(props) => props.theme.background};
   box-shadow: 0px 13px 80px rgba(50, 47, 82, 0.1);
   border-radius: 16px;
