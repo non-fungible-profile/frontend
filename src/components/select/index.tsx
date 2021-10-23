@@ -5,9 +5,10 @@ interface SelectProps {
   options: { label: string; value: string }[]
   value?: { label: string; value: string } | null
   onChange: (value: any) => void
+  disabled?: boolean
 }
 
-export const Select = ({ options, value, onChange }: SelectProps) => {
+export const Select = ({ options, value, disabled, onChange }: SelectProps) => {
   const handleChange = useCallback(
     (value: any) => {
       onChange(value)
@@ -23,6 +24,7 @@ export const Select = ({ options, value, onChange }: SelectProps) => {
         control: (provided: any) => ({ ...provided, paddingLeft: 12, paddingRight: 12, borderRadius: 8 }),
         indicatorSeparator: () => ({ display: 'none' }),
       }}
+      isDisabled={disabled}
       options={options}
       value={value}
       onChange={handleChange}

@@ -30,7 +30,7 @@ export function Home(): ReactElement {
   const { account } = useActiveWeb3React()
 
   const { loading: loadingClaimableAmount, claimableAmount } = useClaimableNfpAmount(account)
-  const { freeClaimAvailable: claimableForFree, loading: loadingClaimableForFree } = useFreeClaimAvailable()
+  const { freeClaimAvailable: claimableForFree, loading: loadingClaimableForFree } = useFreeClaimAvailable(account)
   const freeClaimCallback = useFreeClaimCallback()
   const paidClaimCallback = usePaidClaimCallback(claimableAmount)
   const { loading: loadingMinted, minted: mintedAmount } = useMinted()
@@ -56,22 +56,35 @@ export function Home(): ReactElement {
       <Box>
         <Card padding="52px 82px">
           {loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
-            <RootFlex width="100%" height="100%" justifyContent="center" alignItems="center">
+            <RootFlex minWidth="635px" height="100%" justifyContent="center" alignItems="center">
               <Loader color={theme.accent} />
             </RootFlex>
           ) : (
-            <Flex height="100%" flexDirection="column" justifyContent="center">
-              <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
-                <Text mr="24px" fontSize="18px">Amount</Text>
-                <Box mr="24px">
-                  <Select options={options} value={selectedOption} onChange={setSelectedOption} />
-                </Box>
-                <Button px="54px" primary onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}>
-                  Claim for{' '}
-                  {!claimableForFree && selectedOption ? new Decimal(selectedOption.value).times('0.07').toString() : 0}{' '}
-                  ETH
-                </Button>
-              </Flex>
+            <Flex height="100%" minWidth="635px" flexDirection="column" justifyContent="center">
+              {options.length === 0 ? (
+                <Text mb="32px">This wallet has reached its claiming limit.</Text>
+              ) : (
+                <Flex justifyContent="space-evenly" alignItems="center" mb="32px">
+                  <Text mr="24px" fontSize="18px">
+                    Amount
+                  </Text>
+                  <Box mr="24px">
+                    <Select
+                      options={options}
+                      value={selectedOption}
+                      disabled={options.length === 0}
+                      onChange={setSelectedOption}
+                    />
+                  </Box>
+                  <Button px="54px" primary onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}>
+                    Claim for{' '}
+                    {!claimableForFree && selectedOption
+                      ? new Decimal(selectedOption.value).times('0.07').toString()
+                      : 0}{' '}
+                    ETH
+                  </Button>
+                </Flex>
+              )}
               <Box>
                 <ProgressBar progress={mintedAmount / 1337} lowerBound={0} higherBound={1337} />
               </Box>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useSingleCallResult } from '../state/multicall/hooks'
-import { useActiveWeb3React } from './useActiveWeb3React'
 import { useNfpGenesisContract } from './useContract'
 import { useMinter } from './useMinter'
 
-export function useFreeClaimAvailable(): { loading: boolean; freeClaimAvailable: boolean } {
-  const { account } = useActiveWeb3React()
-
+export function useFreeClaimAvailable(account: string | null | undefined): {
+  loading: boolean
+  freeClaimAvailable: boolean
+} {
   const nfp = useNfpGenesisContract()
   const wrappedMintableResult = useSingleCallResult(nfp, 'mintable')
   const wrappedMintedResult = useSingleCallResult(nfp, 'minted')
