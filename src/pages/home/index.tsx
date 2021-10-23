@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useMemo, useState } from 'react'
 import { Box, Flex, Text } from 'rebass'
 import { Button } from '../../components/button'
 import { useFreeClaimAvailable } from '../../hooks/useFreeClaimAvailable'
@@ -36,11 +36,12 @@ export function Home(): ReactElement {
   const { loading: loadingClaimableAmount, claimableAmount } = useClaimableNfpAmount(account)
   const { freeClaimAvailable: claimableForFree, loading: loadingClaimableForFree } = useFreeClaimAvailable(account)
   const freeClaimCallback = useFreeClaimCallback()
-  const paidClaimCallback = usePaidClaimCallback(claimableAmount)
   const { loading: loadingMinted, minted: mintedAmount } = useMinted()
 
   const [options, setOptions] = useState<{ label: string; value: string }[]>([])
   const [selectedOption, setSelectedOption] = useState<{ label: string; value: string } | undefined>()
+  const claimedAmount = useMemo(() => (selectedOption ? parseInt(selectedOption.value) : 0), [selectedOption])
+  const paidClaimCallback = usePaidClaimCallback(claimedAmount)
 
   useEffect(() => {
     if (!loadingClaimableAmount) {
