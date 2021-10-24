@@ -16,7 +16,6 @@ const NoImage = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  padding-top: 100%;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
