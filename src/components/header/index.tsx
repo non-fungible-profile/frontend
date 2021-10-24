@@ -7,7 +7,7 @@ import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { IdentityBadge } from '../identity-badge'
 import { WalletModal } from '../wallet-modal'
 import { WalletConnectionPopover } from '../wallet-connection-popover'
-import headerLogo from '../../assets/header-logo.png'
+import { ReactComponent as HeaderLogo } from '../../assets/header-image.svg'
 
 const FlexContainer = styled(Flex)`
   position: fixed;
@@ -73,7 +73,7 @@ export const Header = (): ReactElement => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <img src={headerLogo} height="28px" />
+          <HeaderLogo width="180px" />
           <Flex alignItems="center">
             <Box>
               {error instanceof UnsupportedChainIdError ? (
