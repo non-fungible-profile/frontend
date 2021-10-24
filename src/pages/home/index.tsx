@@ -64,12 +64,12 @@ export function Home(): ReactElement {
   return (
     <Flex width="100%" height="100%" flexDirection={['column-reverse', 'row']} justifyContent="center" mt="160px">
       {nfps.length > 0 && (
-        <RaisedBox flex="1" width={['100%', 'auto']} mr={['32px', '0px']} mt={['32px', '0px']}>
+        <RaisedBox width={['100%', '70%', '60%', '40%']} flex="1" mr={['0px', '32px']} mt={['32px', '0px']}>
           <Nfps nfps={nfps} openseaAssets={nfts} />
         </RaisedBox>
       )}
-      <RaisedBox>
-        <Card padding="52px 82px">
+      <RaisedBox width={nfps.length === 0 ? 'auto' : ['100%', '30%', '40%', '60%']}>
+        <Card padding="40px 70px">
           {loadingNfps || loadingClaimableAmount || loadingClaimableForFree || loadingMinted || loadingOpenseaAssets ? (
             <RootFlex height="100%" justifyContent="center" alignItems="center">
               <Loader color={theme.accent} />
@@ -81,15 +81,15 @@ export function Home(): ReactElement {
               ) : (
                 <Flex
                   opacity={options.length === 0 ? 0.5 : 1}
-                  flexDirection={['column', 'row']}
+                  flexDirection={['column', 'column', 'column', 'row']}
                   justifyContent="space-evenly"
                   alignItems="center"
                   mb="32px"
                 >
-                  <Text mr={['0px', '32px']} mb={['24px', '0px']} fontSize="18px">
+                  <Text mr={['0px', '0px', '24px', '32px']} mb={['24px', '24px', '24px', '0px']} fontSize="18px">
                     Amount
                   </Text>
-                  <Box mr={['0px', '32px']} mb={['24px', '0px']}>
+                  <Box mr={['0px', '0px', '24px', '32px']} mb={['24px', '24px', '24px', '0px']}>
                     <Select
                       options={options}
                       value={selectedOption}
