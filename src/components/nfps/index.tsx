@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useSetForegroundNFTCallback } from '../../hooks/useSetForegroundCallback'
 import { Button } from '../button'
 import { ChevronLeft, ChevronRight } from 'react-feather'
+import NfpImage from '../NfpImage'
 
 interface NfpsProps {
   nfps: Nfp[]
@@ -65,7 +66,7 @@ export const Nfps = ({ nfps, openseaAssets }: NfpsProps) => {
             <div key={index}>
               <Flex flexDirection="column" pb="120px">
                 <Box mb="24px">
-                  <img width="100%" src={nfp.uri} />
+                  <NfpImage src={nfp.uri} />
                 </Box>
                 <Text>Genesis profolio {nfp.id}</Text>
                 <Box>
