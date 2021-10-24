@@ -11,7 +11,7 @@
     "@ethersproject/contracts": "^5.4.1",
     "@ethersproject/providers": "^5.4.5",
     "@ethersproject/units": "^5.4.0",
-    "@fontsource/poppins": "^4.5.0",
+    "@fontsource/space-mono": "^4.5.0",
     "@popperjs/core": "^2.10.2",
     "@react-spring/web": "^9.3.0",
     "@reduxjs/toolkit": "^1.6.2",

@@ -5,6 +5,10 @@ const Inline = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+const NoImage = styled.div`
+  width: 100%;
   padding-top: 100%;
   border-radius: 50%;
   background-color: ${(props) => props.theme.border};
@@ -25,7 +29,12 @@ interface NfpImageProps {
 export default function NfpImage({ src, ...rest }: NfpImageProps) {
   const [error, setError] = useState(false)
 
-  if (error) return <Inline />
+  if (error)
+    return (
+      <Inline>
+        <NoImage />
+      </Inline>
+    )
 
   return (
     <Inline>

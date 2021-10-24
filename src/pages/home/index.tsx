@@ -76,6 +76,9 @@ export function Home(): ReactElement {
             </RootFlex>
           ) : (
             <Flex height="100%" flexDirection="column" justifyContent="center">
+              <Text mb="24px" fontSize="24px" fontWeight="700">
+                Mint a profolio
+              </Text>
               {!account ? (
                 <Text mb="32px">Connect a wallet to begin.</Text>
               ) : (

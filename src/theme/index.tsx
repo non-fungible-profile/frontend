@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import '@fontsource/poppins/500.css'
-import '@fontsource/poppins/600.css'
-import '@fontsource/poppins/700.css'
-import '@fontsource/poppins/800.css'
+import '@fontsource/space-mono/'
 import 'react-toastify/dist/ReactToastify.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -114,8 +111,8 @@ export function getTheme(darkMode: boolean): Theme {
 
 export const GlobalStyle = createGlobalStyle`
   html, input, textarea, button {
-    font-family: 'Poppins';
-    font-weight: 500;
+    font-family: 'Space Mono';
+    font-weight: 400;
   }
 
   html,

@@ -52,41 +52,48 @@ export const Nfps = ({ nfps, openseaAssets }: NfpsProps) => {
 
   return nfps.length === 0 ? null : (
     <Card padding="36px 48px">
-      <Slider
-        dots
-        speed={500}
-        slidesToShow={1}
-        slidesToScroll={1}
-        swipe={false}
-        nextArrow={<Arrow onNext={handleNext} />}
-        prevArrow={<Arrow left onPrevious={handlePrev} />}
-      >
-        {nfps.map((nfp, index) => {
-          return (
-            <div key={index}>
-              <Flex flexDirection="column" pb="120px">
-                <Box mb="24px">
-                  <NfpImage src={nfp.uri} />
-                </Box>
-                <Text mb="16px">Genesis profolio {nfp.id}</Text>
-                <Box mb="24px">
-                  <Select
-                    fullWidth
-                    options={foregroundOptions}
-                    value={selectedForegroundOption}
-                    onChange={setSelectedForegroundOption}
-                  />
-                </Box>
-                <Box>
-                  <Button small primary medium onClick={setForegroundNFTCallback}>
-                    Set foreground
-                  </Button>
-                </Box>
-              </Flex>
-            </div>
-          )
-        })}
-      </Slider>
+      <Flex flexDirection="column">
+        <Text fontSize="24px" fontWeight="700" mb="24px">
+          My profolios
+        </Text>
+        <Slider
+          dots
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          swipe={false}
+          nextArrow={<Arrow onNext={handleNext} />}
+          prevArrow={<Arrow left onPrevious={handlePrev} />}
+        >
+          {nfps.map((nfp, index) => {
+            return (
+              <div key={index}>
+                <Flex flexDirection="column" pb="120px">
+                  <Box mb="24px">
+                    <NfpImage src={nfp.uri} />
+                  </Box>
+                  <Text mb="16px" fontWeight="700">
+                    Genesis profolio {nfp.id}
+                  </Text>
+                  <Box mb="24px">
+                    <Select
+                      fullWidth
+                      options={foregroundOptions}
+                      value={selectedForegroundOption}
+                      onChange={setSelectedForegroundOption}
+                    />
+                  </Box>
+                  <Box>
+                    <Button small primary medium onClick={setForegroundNFTCallback}>
+                      Set foreground
+                    </Button>
+                  </Box>
+                </Flex>
+              </div>
+            )
+          })}
+        </Slider>
+      </Flex>
     </Card>
   )
 }
