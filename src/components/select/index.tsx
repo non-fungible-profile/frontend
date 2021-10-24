@@ -6,9 +6,10 @@ interface SelectProps {
   value?: { label: string; value: string } | null
   onChange: (value: any) => void
   disabled?: boolean
+  fullWidth?: boolean
 }
 
-export const Select = ({ options, value, disabled, onChange }: SelectProps) => {
+export const Select = ({ options, value, disabled, onChange, fullWidth }: SelectProps) => {
   const handleChange = useCallback(
     (value: any) => {
       onChange(value)
@@ -19,7 +20,7 @@ export const Select = ({ options, value, disabled, onChange }: SelectProps) => {
   return (
     <ReactSelect
       styles={{
-        container: (provided: any) => ({ ...provided, width: 88 }),
+        container: (provided: any) => ({ ...provided, width: fullWidth ? '100%' : 88 }),
         input: (provided: any) => ({ ...provided, height: 50 }),
         control: (provided: any) => ({ ...provided, paddingLeft: 12, paddingRight: 12, borderRadius: 8 }),
         indicatorSeparator: () => ({ display: 'none' }),

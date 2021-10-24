@@ -15,6 +15,7 @@ import { Decimal } from 'decimal.js-light'
 import { useMinted } from '../../hooks/useMinted'
 import { Nfps } from '../../components/nfps'
 import { useNfps } from '../../hooks/useNfps'
+import { useAllNftsFromOpenSea } from '../../hooks/useAllNftsFromOpenSea'
 
 const RootFlex = styled(Flex)`
   position: relative;
@@ -40,6 +41,7 @@ export function Home(): ReactElement {
   const freeClaimCallback = useFreeClaimCallback()
   const { loading: loadingMinted, minted: mintedAmount } = useMinted()
   const { loading: loadingNfps, nfps } = useNfps(account)
+  const { loading: loadingOpenseaAssets, nfts } = useAllNftsFromOpenSea(account)
 
   const [options, setOptions] = useState<{ label: string; value: string }[]>([])
   const [selectedOption, setSelectedOption] = useState<{ label: string; value: string } | undefined>()
@@ -63,12 +65,12 @@ export function Home(): ReactElement {
     <Flex width="100%" height="100%" justifyContent="center" mt="160px">
       {nfps.length > 0 && (
         <RaisedBox flex="1" mr="32px">
-          <Nfps nfps={nfps} />
+          <Nfps nfps={nfps} openseaAssets={nfts} />
         </RaisedBox>
       )}
       <RaisedBox>
         <Card padding="52px 82px">
-          {loadingNfps || loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
+          {loadingNfps || loadingClaimableAmount || loadingClaimableForFree || loadingMinted || loadingOpenseaAssets ? (
             <RootFlex height="100%" justifyContent="center" alignItems="center">
               <Loader color={theme.accent} />
             </RootFlex>

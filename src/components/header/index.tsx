@@ -12,7 +12,7 @@ import headerLogo from '../../assets/header-logo.png'
 const FlexContainer = styled(Flex)`
   position: fixed;
   top: 0;
-  z-index: 4;
+  z-index: 22;
   background-color: ${(props) => props.theme.background};
   box-shadow: 0px 12px 12px 0px ${(props) => props.theme.background};
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -65,7 +65,7 @@ export const Header = (): ReactElement => {
   return (
     <>
       <WalletModal open={walletModalOpen} onDismiss={handleWalletModalClose} />
-      <FlexContainer width="100%" height="70px" justifyContent="center" alignItems="center" px={['16px', '24px']}>
+      <FlexContainer width="100%" justifyContent="center" alignItems="center" px={['16px', '24px']}>
         <Root
           width={['100%', '80%', '70%', '55%']}
           px="40px"
