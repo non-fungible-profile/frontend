@@ -13,6 +13,8 @@ import { useClaimableNfpAmount } from '../../hooks/useClaimableNfpAmount'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { Decimal } from 'decimal.js-light'
 import { useMinted } from '../../hooks/useMinted'
+import { Nfps } from '../../components/nfps'
+import { useNfps } from '../../hooks/useNfps'
 
 const RootFlex = styled(Flex)`
   position: relative;
@@ -37,6 +39,7 @@ export function Home(): ReactElement {
   const { freeClaimAvailable: claimableForFree, loading: loadingClaimableForFree } = useFreeClaimAvailable(account)
   const freeClaimCallback = useFreeClaimCallback()
   const { loading: loadingMinted, minted: mintedAmount } = useMinted()
+  const { loading: loadingNfps, nfps } = useNfps(account)
 
   const [options, setOptions] = useState<{ label: string; value: string }[]>([])
   const [selectedOption, setSelectedOption] = useState<{ label: string; value: string } | undefined>()
@@ -57,15 +60,20 @@ export function Home(): ReactElement {
   }, [claimableAmount, loadingClaimableAmount])
 
   return (
-    <Flex width="100%" height="100%" justifyContent="center" alignItems="center">
+    <Flex width="100%" height="100%" justifyContent="center" mt="160px">
+      {nfps.length > 0 && (
+        <RaisedBox flex="1" mr="32px">
+          <Nfps nfps={nfps} />
+        </RaisedBox>
+      )}
       <RaisedBox>
         <Card padding="52px 82px">
-          {loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
-            <RootFlex minWidth="635px" height="100%" justifyContent="center" alignItems="center">
+          {loadingNfps || loadingClaimableAmount || loadingClaimableForFree || loadingMinted ? (
+            <RootFlex height="100%" justifyContent="center" alignItems="center">
               <Loader color={theme.accent} />
             </RootFlex>
           ) : (
-            <Flex height="100%" minWidth="635px" flexDirection="column" justifyContent="center">
+            <Flex height="100%" flexDirection="column" justifyContent="center">
               {!account ? (
                 <Text mb="32px">Connect a wallet to begin.</Text>
               ) : (
@@ -75,10 +83,10 @@ export function Home(): ReactElement {
                   alignItems="center"
                   mb="32px"
                 >
-                  <Text mr="24px" fontSize="18px">
+                  <Text mr="32px" fontSize="18px">
                     Amount
                   </Text>
-                  <Box mr="24px">
+                  <Box mr="32px">
                     <Select
                       options={options}
                       value={selectedOption}

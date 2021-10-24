@@ -39,7 +39,7 @@ export function App() {
         <GlobalStyle />
         <Header />
         <Flex alignItems="center" flexDirection="column" height="100%">
-          <Box flex="1">
+          <Box flex="1" width={['100%', '80%', '70%', '55%']}>
             <Home />
           </Box>
           <Box width={['100%', '80%', '70%', '55%']}>

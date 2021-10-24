@@ -11,7 +11,6 @@ export function usePaidClaimCallback(amount: number): () => Promise<void> {
   return useCallback(async () => {
     if (!nfp || amount > 3) return
     try {
-      console.log(parseEther(new Decimal('0.07').times(amount).toString()).toString())
       const tx = await nfp.paidMint(amount, {
         value: parseEther(new Decimal('0.07').times(amount).toString()).toString(),
       })

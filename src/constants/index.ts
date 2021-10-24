@@ -1,5 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { injected, walletConnect } from '../connectors'
+import { GraphQLClient } from 'graphql-request'
 import metamaskLogo from '../assets/metamask-logo.webp'
 import walletConnectLogo from '../assets/wallet-connect-logo.png'
 
@@ -23,6 +24,8 @@ if (window.ethereum) {
     icon: metamaskLogo,
   })
 }
+
+export const subgraphClient = new GraphQLClient('https://api.thegraph.com/subgraphs/name/luzzif/nfp-rinkeby')
 
 export const NETWORK_CONTEXT_NAME = 'NETWORK_CONTEXT'
 
