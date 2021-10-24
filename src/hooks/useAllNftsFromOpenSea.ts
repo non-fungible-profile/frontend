@@ -38,7 +38,6 @@ export const useAllNftsFromOpenSea = (account: string | null | undefined) => {
           if (json.assets.length < pageSize) break
           offset += 50
         }
-        console.log(nfts)
         if (!cancelled) setNfts(nfts)
       } finally {
         if (!cancelled) setLoading(false)

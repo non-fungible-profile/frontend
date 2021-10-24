@@ -62,9 +62,9 @@ export function Home(): ReactElement {
   }, [claimableAmount, loadingClaimableAmount])
 
   return (
-    <Flex width="100%" height="100%" justifyContent="center" mt="160px">
+    <Flex width="100%" height="100%" flexDirection={['column-reverse', 'row']} justifyContent="center" mt="160px">
       {nfps.length > 0 && (
-        <RaisedBox flex="1" mr="32px">
+        <RaisedBox flex="1" width={['100%', 'auto']} mr={['32px', '0px']} mt={['32px', '0px']}>
           <Nfps nfps={nfps} openseaAssets={nfts} />
         </RaisedBox>
       )}
@@ -81,14 +81,15 @@ export function Home(): ReactElement {
               ) : (
                 <Flex
                   opacity={options.length === 0 ? 0.5 : 1}
+                  flexDirection={['column', 'row']}
                   justifyContent="space-evenly"
                   alignItems="center"
                   mb="32px"
                 >
-                  <Text mr="32px" fontSize="18px">
+                  <Text mr={['0px', '32px']} mb={['24px', '0px']} fontSize="18px">
                     Amount
                   </Text>
-                  <Box mr="32px">
+                  <Box mr={['0px', '32px']} mb={['24px', '0px']}>
                     <Select
                       options={options}
                       value={selectedOption}
@@ -98,15 +99,15 @@ export function Home(): ReactElement {
                   </Box>
                   <Button
                     disabled={options.length === 0}
-                    px="54px"
+                    px={['40px', '54px']}
                     primary
                     onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}
                   >
-                    Claim for{' '}
+                    Claim (
                     {!claimableForFree && selectedOption
                       ? new Decimal(selectedOption.value).times('0.07').toString()
                       : 0}{' '}
-                    ETH
+                    ETH)
                   </Button>
                 </Flex>
               )}

@@ -13,7 +13,7 @@ interface ButtonProps {
   negative?: boolean
   disabled?: boolean
 
-  px?: string
+  px?: string | string[]
 
   children?: ReactNode
   icon?: ReactNode

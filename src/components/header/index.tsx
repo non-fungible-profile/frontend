@@ -67,7 +67,7 @@ export const Header = (): ReactElement => {
       <WalletModal open={walletModalOpen} onDismiss={handleWalletModalClose} />
       <FlexContainer width="100%" justifyContent="center" alignItems="center" px={['16px', '24px']}>
         <Root
-          width={['100%', '80%', '70%', '55%']}
+          width={['90%', '80%', '70%', '55%']}
           px="40px"
           height="80px"
           justifyContent="space-between"
