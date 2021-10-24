@@ -12,7 +12,7 @@ import headerLogo from '../../assets/header-logo.png'
 const FlexContainer = styled(Flex)`
   position: fixed;
   top: 0;
-  z-index: 22;
+  z-index: 6;
   background-color: ${(props) => props.theme.background};
   box-shadow: 0px 12px 12px 0px ${(props) => props.theme.background};
   transition: background-color 0.2s ease, box-shadow 0.2s ease;

@@ -99,7 +99,7 @@ export function Home(): ReactElement {
                   </Box>
                   <Button
                     disabled={options.length === 0}
-                    px={['40px', '54px']}
+                    px="40px"
                     primary
                     onClick={claimableForFree ? freeClaimCallback : paidClaimCallback}
                   >
