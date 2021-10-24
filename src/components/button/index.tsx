@@ -21,8 +21,8 @@ interface ButtonProps {
 
 const Root = styled(RebassButton)<ButtonProps & RebassButtonProps>`
   height: ${(props) => {
-    if (props.small) return '32px'
-    if (props.mini) return '25px'
+    if (props.small) return '40px'
+    if (props.mini) return '32px'
     return '80px'
   }};
   line-height: 24px !important;

@@ -68,8 +68,8 @@ export const Nfps = ({ nfps, openseaAssets }: NfpsProps) => {
                 <Box mb="24px">
                   <NfpImage src={nfp.uri} />
                 </Box>
-                <Text>Genesis profolio {nfp.id}</Text>
-                <Box>
+                <Text mb="16px">Genesis profolio {nfp.id}</Text>
+                <Box mb="24px">
                   <Select
                     fullWidth
                     options={foregroundOptions}
@@ -78,7 +78,9 @@ export const Nfps = ({ nfps, openseaAssets }: NfpsProps) => {
                   />
                 </Box>
                 <Box>
-                  <Button onClick={setForegroundNFTCallback}>Set foreground</Button>
+                  <Button small primary medium onClick={setForegroundNFTCallback}>
+                    Set foreground
+                  </Button>
                 </Box>
               </Flex>
             </div>
