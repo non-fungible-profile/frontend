@@ -30,4 +30,4 @@ export const subgraphClient = new GraphQLClient('https://api.thegraph.com/subgra
 export const NETWORK_CONTEXT_NAME = 'NETWORK_CONTEXT'
 
 export const MULTICALL_ADDRESS = '0x42ad527de7d4e9d9d011ac45b31d8551f8fe9821'
-export const NFP_ADDRESS = '0x8476aaeF30D39B666FaF4e24FF8c136aa4257e2a'
+export const NFP_ADDRESS = '0x2e9fCf06Be81F9590783533e37Db2cb51988380D'
